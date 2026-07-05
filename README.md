@@ -1,107 +1,105 @@
 # secure-prompt-masker
 
-Mask sensitive text locally before using logs, prompts, request snippets, or copied troubleshooting data with AI-assisted tools.
+AI 도구, 이슈, 보고서, 메신저에 로그나 요청 데이터를 붙여넣기 전에 민감한 텍스트를 로컬에서 마스킹하는 Python/Tkinter 데스크톱 유틸리티입니다.
 
-## Why This Exists
+## 만든 이유
 
-Security and engineering workflows often require sharing text with an assistant, ticket, report, or teammate. That text can accidentally include authorization headers, cookies, tokens, account identifiers, contact details, internal project names, or customer-specific context.
+보안 점검, 디버깅, 장애 분석, AI 보조 업무에서는 요청 헤더, 쿠키, 토큰, 계정 식별자, 내부 프로젝트명, 고객 맥락이 섞인 텍스트를 다루는 일이 많습니다. `secure-prompt-masker`는 이런 텍스트를 외부 도구에 옮기기 전에 로컬에서 한 번 검토하고 마스킹하도록 돕습니다.
 
-`secure-prompt-masker` is a small local desktop utility that helps review and mask that text before it is copied elsewhere.
+## 주요 기능
 
-## What It Does
+- 별도 서버 없이 로컬 데스크톱 앱으로 실행
+- 토큰, 쿠키, 인증 헤더, 비밀번호성 키-값, 전화번호 형태 값 등 공통 민감 패턴 탐지
+- 프로젝트별 사용자 지정 키워드 마스킹
+- 요청 조각을 다룰 때 사용할 수 있는 URL 인코딩 모드
+- 로컬 설정 파일은 Git에 포함되지 않도록 관리
+- 저장소 예시는 모두 가짜 값만 사용
 
-- Runs as a local Python/Tkinter desktop app.
-- Masks common sensitive patterns such as tokens, cookies, authorization headers, credential-like key-value pairs, and phone-like values.
-- Supports user-defined keywords for project-specific placeholders.
-- Provides a URL encoding mode for copied request fragments.
-- Keeps local preferences in ignored runtime files.
-- Uses fake demo values only in repository examples.
+## 실행 방법
 
-## Quick Start
+필요 조건:
 
-Requirements:
+- Python 3.10 이상
+- Python 설치에 Tkinter 지원 포함
 
-- Python 3.10 or newer
-- Tkinter support in your Python installation
-
-Run from the repository root:
+저장소 루트에서 실행합니다.
 
 ```bash
 python masking_app.py
 ```
 
-Basic workflow:
+기본 사용 흐름:
 
-1. Paste text into the input area.
-2. Review the detected sensitive values.
-3. Choose the values or categories to mask.
-4. Copy the masked output only after manual review.
+1. 입력 영역에 텍스트를 붙여넣습니다.
+2. 탐지된 민감값을 확인합니다.
+3. 마스킹할 값 또는 분류를 선택합니다.
+4. 결과를 직접 검토한 뒤 복사합니다.
 
-## Safe Demo Input
-
-```text
-POST /api/demo/action
-Authorization: Bearer demo-token-value
-Cookie: session=demo-session-value
-X-Api-Key: demo-api-key-value
-project=example-project
-owner=sample-contact
-message=Mask before using this text in an AI-assisted workflow.
-```
-
-Expected style of output:
+## 안전한 데모 입력
 
 ```text
 POST /api/demo/action
-Authorization: Bearer ****************
-Cookie: session=******************
-X-Api-Key: ******************
-project=***************
-owner=**************
-message=Mask before using this text in an AI-assisted workflow.
+Authorization: Bearer 데모토큰값
+Cookie: session=데모세션값
+X-Api-Key: 데모API키값
+project=예시프로젝트
+owner=샘플담당자
+message=AI 보조 업무에 사용하기 전에 이 텍스트를 마스킹합니다.
 ```
 
-All values above are fake. Do not add real company names, customer data, credentials, domains, phone numbers, addresses, production logs, or private prompts to this repository.
+출력 예시:
 
-## Verification
+```text
+POST /api/demo/action
+Authorization: Bearer ******
+Cookie: session=******
+X-Api-Key: ******
+project=******
+owner=*****
+message=AI 보조 업무에 사용하기 전에 이 텍스트를 마스킹합니다.
+```
 
-Run a basic syntax check:
+위 값은 모두 가짜입니다. 실제 회사명, 고객 데이터, 인증정보, 도메인, 전화번호, 주소, 운영 로그, 비공개 프롬프트를 이 저장소에 추가하지 마세요.
+
+## 검증
+
+기본 구문 검사를 실행합니다.
 
 ```bash
 python -m py_compile masking_app.py
 ```
 
-Recommended manual smoke test:
+권장 수동 스모크 테스트:
 
-1. Start the app.
-2. Paste the fake sample above.
-3. Run masking.
-4. Confirm fake token, cookie, API key, and custom keyword values are masked.
-5. Close the app and confirm no local runtime output is committed.
+1. 앱을 실행합니다.
+2. 위 데모 입력을 붙여넣습니다.
+3. 마스킹을 실행합니다.
+4. 가짜 토큰, 쿠키, API 키, 사용자 지정 키워드가 마스킹되는지 확인합니다.
+5. 앱 종료 후 로컬 설정/출력 파일이 커밋 대상에 들어가지 않았는지 확인합니다.
 
-## Privacy And Security Notes
+## 개인정보와 보안 메모
 
-- Processing is intended to happen locally.
-- Masked output can still contain sensitive context; review it before sharing.
-- Clipboard contents may be visible to other local software.
-- Local settings, captures, exports, logs, and screenshots should not be committed.
-- Pattern-based masking is a safety aid, not a guarantee.
+- 처리는 로컬에서 수행하는 것을 전제로 합니다.
+- 마스킹 결과에도 민감한 맥락이 남을 수 있으므로 공유 전 직접 검토해야 합니다.
+- 클립보드 내용은 다른 로컬 소프트웨어에 노출될 수 있습니다.
+- 로컬 설정, 캡처, 내보내기, 로그, 스크린샷은 커밋하지 않아야 합니다.
+- 패턴 기반 마스킹은 보조 안전장치이며 완전한 보장을 의미하지 않습니다.
 
-## Limitations
+## 한계
 
-- Unusual secret formats may not be detected.
-- Some benign identifiers may be masked as false positives.
-- The tool does not replace secure handling procedures, DLP review, or legal/compliance approval.
-- Public release requires both working-tree and Git-history scans.
+- 드문 형식의 비밀값은 탐지하지 못할 수 있습니다.
+- 정상 식별자가 민감값으로 오탐될 수 있습니다.
+- 이 도구는 안전한 데이터 처리 절차, DLP 검토, 법무/컴플라이언스 승인을 대체하지 않습니다.
+- 공개 전에는 현재 파일뿐 아니라 Git 히스토리까지 점검해야 합니다.
 
-## Documentation
+## 문서
 
-- [Usage Guide](docs/USAGE.md)
-- [Sample Data](docs/SAMPLES.md)
-- [Privacy And Security](docs/PRIVACY_AND_SECURITY.md)
-- [Public Release Checklist](docs/PUBLIC_RELEASE_CHECKLIST.md)
-- [Security Policy](SECURITY.md)
+- [사용 가이드](docs/USAGE.md)
+- [샘플 데이터](docs/SAMPLES.md)
+- [개인정보와 보안](docs/PRIVACY_AND_SECURITY.md)
+- [공개 전 체크리스트](docs/PUBLIC_RELEASE_CHECKLIST.md)
+- [보안 정책](SECURITY.md)
 
-## License
+## 라이선스
 
-No license has been selected yet.
+아직 별도 오픈소스 라이선스를 지정하지 않았습니다.

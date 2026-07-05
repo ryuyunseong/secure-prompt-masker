@@ -1,44 +1,42 @@
-# Sample Data
+# 샘플 데이터
 
-These samples are intentionally fake and safe for documentation. Do not replace them with real logs or customer data.
+아래 샘플은 문서용 가짜 데이터입니다. 실제 로그나 고객 데이터로 바꾸지 마세요.
 
-## Input
-
-```text
-POST /api/demo/action
-Authorization: Bearer demo-token-value
-Cookie: session=demo-session-value; theme=light
-X-Api-Key: demo-api-key-value
-project=example-project
-owner=sample-contact
-address=demo-address
-message=Please mask this text before using it in an AI-assisted workflow.
-```
-
-## Expected Style Of Output
+## 입력
 
 ```text
 POST /api/demo/action
-Authorization: Bearer ****************
-Cookie: session=******************; theme=light
-X-Api-Key: ******************
-project=***************
-owner=**************
-address=************
-message=Please mask this text before using it in an AI-assisted workflow.
+Authorization: Bearer 데모토큰값
+Cookie: session=데모세션값; theme=light
+X-Api-Key: 데모API키값
+project=예시프로젝트
+owner=샘플담당자
+address=예시주소
+message=AI 보조 업무에 사용하기 전에 이 텍스트를 마스킹합니다.
 ```
 
-Exact masking length can vary by pattern and selected category. The important requirement is that sensitive-looking values are not copied out in clear text.
+## 출력 형태 예시
 
-## Unsafe Samples To Avoid
+```text
+POST /api/demo/action
+Authorization: Bearer ******
+Cookie: session=******; theme=light
+X-Api-Key: ******
+project=******
+owner=*****
+address=****
+message=AI 보조 업무에 사용하기 전에 이 텍스트를 마스킹합니다.
+```
 
-Do not add samples containing:
+선택한 분류와 패턴에 따라 마스킹 길이는 달라질 수 있습니다. 중요한 기준은 민감해 보이는 값이 평문으로 복사되지 않는 것입니다.
 
-- Real company or customer names.
-- Real personal names.
-- Real addresses.
-- Real phone numbers.
-- Real emails or domains.
-- Real API keys, tokens, cookies, or session values.
-- Raw prompts containing private business context.
-- Screenshots of production tools or customer systems.
+## 넣으면 안 되는 샘플
+
+- 실제 회사명 또는 고객명
+- 실제 개인명
+- 실제 주소
+- 실제 전화번호
+- 실제 이메일 또는 도메인
+- 실제 API 키, 토큰, 쿠키, 세션 값
+- 비공개 업무 맥락이 포함된 원본 프롬프트
+- 운영 도구나 고객 시스템 화면 캡처

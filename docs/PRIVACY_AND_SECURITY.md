@@ -1,34 +1,34 @@
-# Privacy And Security
+# 개인정보와 보안
 
-## Local Processing
+## 로컬 처리
 
-`secure-prompt-masker` is designed as a local desktop utility. It does not require a hosted backend service for masking.
+`secure-prompt-masker`는 로컬 데스크톱 유틸리티로 사용하는 것을 전제로 합니다. 마스킹을 위해 별도 백엔드 서비스를 요구하지 않습니다.
 
-## Data Handling Expectations
+## 데이터 처리 원칙
 
-- Treat all pasted text as potentially sensitive.
-- Review masked output before sharing it with any external service.
-- Do not commit local settings, logs, screenshots, exports, or copied customer text.
-- Do not use real secrets to demonstrate the app.
+- 붙여넣는 모든 텍스트를 잠재적으로 민감한 데이터로 취급합니다.
+- 외부 서비스에 공유하기 전에 마스킹 결과를 직접 검토합니다.
+- 로컬 설정, 로그, 스크린샷, 내보내기 파일, 고객 텍스트를 커밋하지 않습니다.
+- 앱 데모에 실제 비밀값을 사용하지 않습니다.
 
-## Clipboard Risk
+## 클립보드 위험
 
-The app can copy output to the operating system clipboard. Clipboard data may be readable by other local applications, remote desktop tools, or clipboard managers. Clear the clipboard when handling sensitive material.
+앱은 결과를 운영체제 클립보드에 복사할 수 있습니다. 클립보드 데이터는 다른 로컬 앱, 원격 접속 도구, 클립보드 관리자에서 읽을 수 있습니다. 민감한 자료를 다룬 뒤에는 클립보드를 정리하세요.
 
-## Git History Risk
+## Git 히스토리 위험
 
-Removing sensitive text from the current file is not enough if the repository is public or will become public. Review the full Git history before release.
+현재 파일에서 민감 텍스트를 제거하는 것만으로는 충분하지 않습니다. 저장소가 공개 상태이거나 공개 예정이라면 전체 Git 히스토리를 함께 검토해야 합니다.
 
-Recommended checks:
+권장 확인:
 
 ```bash
-git grep -n -I "sensitive-placeholder"
 git log --all --oneline
 git rev-list --all
+git grep -n -I "검사할-자리표시자"
 ```
 
-Use targeted searches for known values without printing the values in reports.
+알려진 값을 검색할 때도 보고서에는 원문 값을 출력하지 마세요.
 
-## Reporting Issues
+## 문제 보고 방식
 
-If you find real sensitive data in this repository, report the file path, line number, commit hash when relevant, and risk reason. Do not include the raw sensitive value in the report.
+이 저장소에서 실제 민감 데이터가 발견되면 파일 경로, 라인 번호, 관련 커밋 해시, 위험 사유만 보고하세요. 민감값 원문은 보고서에 포함하지 않습니다.

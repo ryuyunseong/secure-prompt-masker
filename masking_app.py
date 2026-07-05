@@ -12,11 +12,11 @@ from typing import Any
 from urllib.parse import quote
 
 DEFAULT_KEYWORDS = [
-    "example-company",
-    "example-project",
-    "internal-id-0000",
-    "sample-contact",
-    "demo-address",
+    "예시회사",
+    "예시프로젝트",
+    "내부식별자-0000",
+    "샘플담당자",
+    "예시주소",
 ]
 
 SENSITIVE_PATTERNS = [

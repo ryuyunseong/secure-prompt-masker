@@ -1,26 +1,26 @@
-# Public Release Checklist
+# 공개 전 체크리스트
 
-Use this checklist before treating the repository as portfolio-ready.
+포트폴리오용 공개 저장소로 사용하기 전에 아래 항목을 확인합니다.
 
-## Required
+## 필수 항목
 
-- README explains purpose, usage, privacy notes, and limitations.
-- Samples use fake values only.
-- No real organization names, personal names, addresses, registration numbers, phone numbers, emails, domains, credentials, cookies, or customer terms in the working tree.
-- `.gitignore` blocks local settings, logs, captures, exports, screenshots, and temporary files.
-- `python -m py_compile masking_app.py` passes.
-- Manual GUI smoke test passes.
-- Git history scan finds no sensitive values.
-- Repository license decision is explicit.
+- README가 목적, 사용법, 개인정보/보안 메모, 한계를 설명합니다.
+- 샘플은 가짜 값만 사용합니다.
+- 현재 작업 트리에 실제 조직명, 개인명, 주소, 등록번호, 전화번호, 이메일, 도메인, 인증정보, 쿠키, 고객 고유 용어가 없습니다.
+- `.gitignore`가 로컬 설정, 로그, 캡처, 내보내기, 스크린샷, 임시 파일을 제외합니다.
+- `python -m py_compile masking_app.py`가 통과합니다.
+- 수동 GUI 스모크 테스트가 통과합니다.
+- Git 히스토리 스캔에서 민감값이 발견되지 않습니다.
+- 라이선스 정책이 명확합니다.
 
-## Git History Requirement
+## Git 히스토리 요구사항
 
-The public branch history must not contain removed real-world default keywords or other sensitive values. If history has been rewritten, verify the result from a fresh clone before treating the repository as portfolio-ready.
+공개 브랜치 히스토리에는 제거된 실제 기본 키워드나 기타 민감값이 남아 있지 않아야 합니다. 히스토리를 재작성한 경우 fresh clone에서 다시 검증한 뒤 포트폴리오에 연결하세요.
 
-## Manual GitHub Steps After Cleanup
+## GitHub 공개 상태 점검
 
-1. Confirm the default branch contains only sanitized files.
-2. Confirm full Git history scan is clean from a fresh clone.
-3. Enable repository security features where available.
-4. Add a concise repository description.
-5. Pin the repository only after the public checklist passes.
+1. 기본 브랜치가 정리된 파일만 포함하는지 확인합니다.
+2. fresh clone 기준 전체 Git 히스토리 스캔이 깨끗한지 확인합니다.
+3. 가능한 저장소 보안 기능을 활성화합니다.
+4. 저장소 설명을 간결하게 작성합니다.
+5. 공개 체크리스트가 통과한 뒤 프로필에 고정합니다.

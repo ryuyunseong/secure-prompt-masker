@@ -1,61 +1,61 @@
-# Usage Guide
+# 사용 가이드
 
-## Run The App
+## 앱 실행
 
-From the repository root:
+저장소 루트에서 실행합니다.
 
 ```bash
 python masking_app.py
 ```
 
-The application starts as a local desktop window.
+로컬 데스크톱 창이 열립니다.
 
-## Basic Workflow
+## 기본 흐름
 
-1. Paste text into the input area.
-2. Review or adjust the keyword list.
-3. Choose masking mode.
-4. Run the transform action.
-5. Review the output before copying it to another tool.
+1. 입력 영역에 텍스트를 붙여넣습니다.
+2. 키워드 목록을 검토하거나 조정합니다.
+3. 마스킹 모드를 선택합니다.
+4. 변환을 실행합니다.
+5. 결과를 확인한 뒤 다른 도구로 복사합니다.
 
-## Custom Keywords
+## 사용자 지정 키워드
 
-Use custom keywords for project-specific placeholder values that should always be masked. Keep these values fake when committing examples or screenshots.
+사용자 지정 키워드는 프로젝트별로 반드시 마스킹해야 하는 자리표시자에 사용합니다. 공개 예시나 스크린샷에는 가짜 값만 사용하세요.
 
-Good public examples:
+공개 저장소에 적합한 예시:
 
 ```text
-example-company
-example-project
-internal-id-0000
-sample-contact
-demo-address
+예시회사
+예시프로젝트
+내부식별자-0000
+샘플담당자
+예시주소
 ```
 
-Do not commit real organization names, personal names, addresses, phone numbers, registration numbers, account IDs, API keys, session values, or customer-specific terms.
+실제 조직명, 개인명, 주소, 전화번호, 등록번호, 계정 ID, API 키, 세션 값, 고객 고유 용어는 커밋하지 마세요.
 
-## Local Files
+## 로컬 파일
 
-The app may create local runtime state such as:
+앱은 아래와 같은 로컬 실행 상태 파일을 만들 수 있습니다.
 
 ```text
 settings.json
 ```
 
-This file is ignored by Git because it may reflect local preferences or user-entered keyword choices.
+이 파일은 로컬 설정이나 사용자가 입력한 키워드가 포함될 수 있으므로 Git에서 제외합니다.
 
-## Verification
+## 검증
 
-Basic syntax check:
+기본 구문 검사:
 
 ```bash
 python -m py_compile masking_app.py
 ```
 
-Manual smoke test:
+수동 스모크 테스트:
 
-1. Start the app.
-2. Paste the fake sample from `docs/SAMPLES.md`.
-3. Run masking.
-4. Confirm obvious fake token and cookie values are masked.
-5. Close the app without committing local runtime files.
+1. 앱을 실행합니다.
+2. `docs/SAMPLES.md`의 가짜 샘플을 붙여넣습니다.
+3. 마스킹을 실행합니다.
+4. 가짜 토큰과 쿠키 값이 마스킹되는지 확인합니다.
+5. 로컬 실행 파일을 커밋하지 않고 앱을 종료합니다.

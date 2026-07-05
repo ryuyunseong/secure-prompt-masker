@@ -1,35 +1,35 @@
-# Security Policy
+# 보안 정책
 
-## Scope
+## 범위
 
-This repository is a local masking utility for security portfolio use. Reports should focus on issues that could cause sensitive text to be exposed, persisted, or documented unsafely.
+이 저장소는 보안 포트폴리오용 로컬 마스킹 유틸리티입니다. 보고 대상은 민감한 텍스트가 노출, 저장, 문서화될 수 있는 문제입니다.
 
-## Do Not Include Raw Secrets
+## 원문 민감값 금지
 
-When reporting a problem, do not include raw credentials, tokens, cookies, private prompts, personal data, customer names, or production logs.
+문제를 보고할 때 인증정보, 토큰, 쿠키, 비공개 프롬프트, 개인정보, 고객명, 운영 로그 원문을 포함하지 마세요.
 
-Use this format instead:
-
-```text
-file: path/to/file
-line: line number when available
-commit: short commit hash when relevant
-risk: short reason
-value: redacted
-```
-
-## Safe Test Data
-
-Use fake placeholders only:
+아래 형식을 사용하세요.
 
 ```text
-example-company
-example-project
-demo-token-value
-sample-contact
-demo-address
+파일: path/to/file
+라인: 확인 가능한 경우 라인 번호
+커밋: 관련 있는 경우 짧은 커밋 해시
+위험: 짧은 사유
+값: 마스킹됨
 ```
 
-## Release Requirement
+## 안전한 테스트 데이터
 
-Before this repository is treated as public-ready, the current working tree and full public branch history must be scanned for removed real-world default keywords and other sensitive data.
+가짜 자리표시자만 사용합니다.
+
+```text
+예시회사
+예시프로젝트
+데모토큰값
+샘플담당자
+예시주소
+```
+
+## 공개 전 요구사항
+
+공개 포트폴리오로 사용하기 전에는 현재 작업 트리와 공개 브랜치 전체 히스토리에서 제거된 실제 기본 키워드와 기타 민감 데이터가 남아 있지 않은지 검사해야 합니다.
