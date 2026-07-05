@@ -1,0 +1,38 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local runtime state and generated detection output
+settings.json
+detections.txt
+
+# Environment files and secrets
+.env
+.env.*
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# Logs, databases, and temporary artifacts
+*.log
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+*.tmp
+*.swp
+
+# Local captures and review artifacts that may contain sensitive text
+screenshots/
+captures/
+exports/
+reports/
+local-output/
+*.har
+*.pcap
+*.pcapng
+*.zip
+
