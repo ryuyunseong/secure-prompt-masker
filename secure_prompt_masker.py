@@ -124,10 +124,10 @@ SENSITIVE_PARAM_KEYS = {
 }
 
 
-class MaskingApp(tk.Tk):
+class SecurePromptMaskerApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("패킷 로그 민감정보 마스킹")
+        self.title("Secure Prompt Masker - 민감 텍스트 마스킹")
         screen_w = self.winfo_screenwidth()
         screen_h = self.winfo_screenheight()
         window_w = min(1440, max(1100, screen_w - 80))
@@ -182,7 +182,7 @@ class MaskingApp(tk.Tk):
         header = ttk.Frame(main)
         header.grid(row=0, column=0, sticky="ew", pady=(0, 8))
         header.columnconfigure(0, weight=1)
-        ttk.Label(header, text="패킷 로그 민감정보 마스킹", font=("맑은 고딕", 14, "bold")).grid(
+        ttk.Label(header, text="Secure Prompt Masker - 민감 텍스트 마스킹", font=("맑은 고딕", 14, "bold")).grid(
             row=0, column=0, sticky="w"
         )
         self.controls_toggle_btn = ttk.Button(header, command=self.toggle_controls)
@@ -1619,5 +1619,5 @@ class MaskingApp(tk.Tk):
 
 
 if __name__ == "__main__":
-    app = MaskingApp()
+    app = SecurePromptMaskerApp()
     app.mainloop()

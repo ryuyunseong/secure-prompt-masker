@@ -5,7 +5,7 @@
 저장소 루트에서 실행합니다.
 
 ```bash
-python masking_app.py
+python secure_prompt_masker.py
 ```
 
 로컬 데스크톱 창이 열립니다.
@@ -49,7 +49,7 @@ settings.json
 기본 구문 검사:
 
 ```bash
-python -m py_compile masking_app.py
+python -m py_compile secure_prompt_masker.py
 ```
 
 수동 스모크 테스트:
