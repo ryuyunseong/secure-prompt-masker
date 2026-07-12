@@ -341,7 +341,7 @@ class SecurePromptMaskerApp(tk.Tk):
         ).pack(anchor="w")
         ttk.Radiobutton(
             mode_frame,
-            text="URL 인코딩",
+            text="URL 인코딩 (마스킹 아님)",
             value="url_encode",
             variable=self.transform_mode,
             command=self._on_transform_mode_changed,
@@ -601,7 +601,11 @@ class SecurePromptMaskerApp(tk.Tk):
     def _update_output_title(self):
         if not hasattr(self, "output_container"):
             return
-        title = "URL 인코딩 결과" if self.transform_mode.get() == "url_encode" else "마스킹 결과"
+        title = (
+            "URL 인코딩 결과 (마스킹되지 않음)"
+            if self.transform_mode.get() == "url_encode"
+            else "마스킹 결과"
+        )
         self.output_container.configure(text=title)
 
     def masking(self):
@@ -660,7 +664,10 @@ class SecurePromptMaskerApp(tk.Tk):
         encoded = quote(text, safe="/:?&=#%[]@!$&'()*+,;-_.~\r\n")
         self._replace_output_text(encoded)
         self._copy_output_to_clipboard()
-        self._set_notice("OK: URL 인코딩 결과가 클립보드에 복사되었습니다.", status="URL 인코딩 완료")
+        self._set_notice(
+            "WARN: URL 인코딩은 민감정보를 숨기지 않습니다. 결과가 클립보드에 복사되었습니다.",
+            status="URL 인코딩 완료 (마스킹되지 않음)",
+        )
 
     def copy_output(self):
         if not self.output_text.get("1.0", "end-1c"):
@@ -800,8 +807,13 @@ class SecurePromptMaskerApp(tk.Tk):
         )
 
     def open_output_viewer(self):
+        title = (
+            "URL 인코딩 결과 (확대 보기, 마스킹되지 않음)"
+            if self.transform_mode.get() == "url_encode"
+            else "마스킹 결과 (확대 보기)"
+        )
         self._open_text_viewer(
-            title="마스킹 결과 (확대 보기)",
+            title=title,
             text=self.output_text.get("1.0", "end-1c"),
             editable=False,
             viewer_key="output",
@@ -976,7 +988,8 @@ class SecurePromptMaskerApp(tk.Tk):
                         if name == "계좌번호(일반)" and self._looks_like_phone_number(value):
                             continue
                         values.append(value)
-                details[name] = values
+                if values:
+                    details[name] = values
         return details
 
     def _looks_like_product_version(self, text, match):

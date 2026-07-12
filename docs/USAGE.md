@@ -18,6 +18,10 @@ python secure_prompt_masker.py
 4. 변환을 실행합니다.
 5. 결과를 확인한 뒤 다른 도구로 복사합니다.
 
+## URL 인코딩 주의사항
+
+URL 인코딩은 특수문자의 표현을 바꾸는 기능이며 마스킹이나 암호화가 아닙니다. URL 인코딩 결과에는 원래 민감정보가 그대로 복원 가능한 형태로 남으므로 외부 공유용 결과를 만들 때 사용하지 마세요.
+
 ## 사용자 지정 키워드
 
 사용자 지정 키워드는 프로젝트별로 반드시 마스킹해야 하는 자리표시자에 사용합니다. 공개 예시나 스크린샷에는 가짜 값만 사용하세요.
@@ -51,6 +55,12 @@ settings.json
 ```bash
 python -m py_compile secure_prompt_masker.py
 ```
+
+자동 회귀 테스트:
+
+~~~bash
+python -m unittest discover -s tests -v
+~~~
 
 수동 스모크 테스트:
 
